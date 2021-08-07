@@ -273,8 +273,6 @@ class RRTGraph:
                 self.add_edge(idx_rand, idx_near)
                 self.finish_flag = True
                 self.finish_index = idx_rand
-                self.add_node(self.n_nodes(), self.target[0], self.target[1])
-                self.add_edge(self.n_nodes(), self.n_nodes()-1)
             else:
                 # self.add_node(idx_rand, x, y)
                 if self.is_collided(x, y) is False and self.avoid_things(idx_near, idx_rand) is False:
