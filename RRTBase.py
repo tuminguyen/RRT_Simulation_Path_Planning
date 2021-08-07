@@ -177,6 +177,10 @@ class RRTGraph:
         x2, y2 = self.xs[idx2], self.ys[idx2]
         width = abs(x2 - x1)
         height = abs(y2 - y1)
+        if width == 0:
+            width = 1
+        if height == 0:
+            height = 1
         rect_line = pygame.Rect((min(x1, x2), min(y1, y2)), (width, height))
         for obs in self.obstacles:
             if obs.colliderect(rect_line):
@@ -186,7 +190,9 @@ class RRTGraph:
                 return True
         for t in self.tri_checklist:
             if triangle_collide((x1, y1), t[0], t[1], t[2]) or \
-                    triangle_collide((x2, y2), t[0], t[1], t[2]):
+                    triangle_collide((x2, y2), t[0], t[1], t[2]) or \
+                    triangle_collide((min(x1, x2), min(y1, y2)), t[0], t[1], t[2]) or \
+                    triangle_collide((max(x1, x2), max(y1, y2)), t[0], t[1], t[2]):
                 return True
         return False
 
@@ -271,7 +277,6 @@ class RRTGraph:
                 self.finish_flag = True
                 self.finish_index = idx_rand
             else:
-                # self.add_node(idx_rand, x, y)
                 if self.is_collided(x, y) is False and self.avoid_things(idx_near, idx_rand) is False:
                     self.add_edge(idx_rand, idx_near)
                 else:
