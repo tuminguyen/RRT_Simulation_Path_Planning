@@ -27,8 +27,13 @@ if __name__ == '__main__':
     count = 0
     while run:
         for event in pygame.event.get():
+            # press ESC or click X to exit
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 run = False
+            # print pointer position when click
+            if event.type == pygame.MOUSEBUTTONUP:
+                print(pygame.mouse.get_pos())
+        # find path
         while not rrt_graph.path_history():
             if count % 5 == 0:
                 xs, ys, parents = rrt_graph.bias(TARGET)
@@ -39,6 +44,7 @@ if __name__ == '__main__':
             pygame.draw.line(rrt_map.map, rrt_map.blue, (xs[-1], ys[-1]),
                              (xs[parents[-1]], ys[parents[- 1]]), 1)
             count += 1
+        # draw path
         if rrt_graph.finish_flag:
             path_nodes = rrt_graph.get_path_nodes()
             for pn in path_nodes:
