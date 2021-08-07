@@ -75,9 +75,6 @@ class RRTMap:
     def get_obs(self):
         return self.obstacles
 
-    def draw_path(self):
-        pass
-
 
 class RRTGraph:
     def __init__(self, start, target, obstacles, tri_checklist, rect_checklist, step_size):
