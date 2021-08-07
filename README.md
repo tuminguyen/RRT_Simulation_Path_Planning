@@ -4,6 +4,12 @@ Simulate RRT (Rapidly-exploring Random Tree) algorithm with Python in 2 scenario
 - Easy: no lane, only obstacles
 - Hard: complex lanes and obstacles
 
+
+<p float="left">
+  <img src="images/ez.gif" width="400" hspace="10"/>
+  <img src="images/hard.gif" width="400" /> 
+</p>
+
 ## Environment 
 - Python 3.7
 - Ubuntu 20.04
