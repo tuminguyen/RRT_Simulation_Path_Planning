@@ -43,3 +43,5 @@ pip install -r requirements.txt
     ```
     python RRT.py -m hard
     ```
+
+Code for the RRT* is **[here](https://github.com/tuminguyen/RRT_Star_Simulation)**
